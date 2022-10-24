@@ -1,6 +1,18 @@
 const usuarios = require('../databases/usuarios.json')
+const bcrypt = require('bcrypt');
 
-console.log(usuarios)
+let teste =  {
+    "id": 129,
+    "nome": "Felipe",
+    "email": "felipe@eu.com.br",
+    "senha": "123456",
+    "enderecos": [
+        "asdasdasd"
+    ],
+    "formasDePagamento": []
+}
+
+
 function listar(){
     // Seu código aqui
     console.table(usuarios.map(
@@ -20,22 +32,42 @@ function listarNome(){
 
 
 function buscar(){
-    console.table(usuarios.filter(usuario.nome))
+    // console.table(usuarios.filter(usuario.nome))
 
 }
 
-buscar()
+
 
 function salvar(arrayDeUsuarios){
-    // Seu código aqui
+   
+    const fs = require('fs')
+    fs.writeFileSync("./databases/usuarios.json", JSON.stringify(arrayDeUsuarios, null, 2))
+
 }
 
+salvar(teste)
 
+
+        
 
 
 function cadastrar(objeto){
-// Seu código aqui
+
+        let senhuaCriptografada = bcrypt.hashSync(objeto.senha, 10)
+        let novoId = usuarios[usuarios.length - 1].id+1
+        let usuarioCad = {
+            id: novoId,
+            nome: objeto.nome,
+            email: objeto.email,
+            senha: senhuaCriptografada,
+            enderecos: [objeto.enderecos],
+            formasDePagamento: []
+
+        }
+        
 }
+
+
 
 function detalhar(idUsuario){
 // Seu código aqui
