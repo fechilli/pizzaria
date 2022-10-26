@@ -45,21 +45,15 @@ function salvar(arrayDeUsuarios){
 
 }
 
-salvar(teste)
-
-
-        
-
-
 function cadastrar(objeto){
 
-        let senhuaCriptografada = bcrypt.hashSync(objeto.senha, 10)
+        let senhaCriptografada = bcrypt.hashSync(objeto.senha, 10)
         let novoId = usuarios[usuarios.length - 1].id+1
         let usuarioCad = {
             id: novoId,
             nome: objeto.nome,
             email: objeto.email,
-            senha: senhuaCriptografada,
+            senha: senhaCriptografada,
             enderecos: [objeto.enderecos],
             formasDePagamento: []
 
@@ -71,7 +65,19 @@ function cadastrar(objeto){
 
 function detalhar(idUsuario){
 // Seu código aqui
+    //let detalhes = usuarios.map(c => c.id === idUsuario);
+
+    let detalhes2 = usuarios.find(u => u.id === idUsuario)
+    let detalhes3 = {
+        nome: detalhes2.nome,
+        email: detalhes2.email,
+        enderecos: detalhes2.enderecos,
+        formasDePagamento: detalhes2.formasDePagamento
+    }
+    console.log(detalhes3)
 }
+
+detalhar(128)
 
 function remover(idDoUsuarioParaRemover){
     // Seu código aqui
@@ -109,6 +115,7 @@ const UsuariosServices = {
     cadastrar,
     listar,
     detalhar,
+    salvar,
     remover,
     alterar,
     addEndereco,
