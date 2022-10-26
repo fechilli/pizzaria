@@ -77,11 +77,17 @@ function detalhar(idUsuario){
     console.log(detalhes3)
 }
 
-detalhar(128)
+
 
 function remover(idDoUsuarioParaRemover){
     // Seu código aqui
+    let procurarId = usuarios.find(u => u.id === idDoUsuarioParaRemover)
+    let remove = usuarios.indexOf(idDoUsuarioParaRemover)
+    
+    console.log(procurarId)
+
 }
+
 
 function alterar(novosDados, idUsuario){
     // Seu código aqui
