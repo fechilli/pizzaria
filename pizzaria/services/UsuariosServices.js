@@ -81,16 +81,31 @@ function detalhar(idUsuario){
 
 function remover(idDoUsuarioParaRemover){
     // Seu código aqui
-    let procurarId = usuarios.find(u => u.id === idDoUsuarioParaRemover)
-    let remove = usuarios.indexOf(idDoUsuarioParaRemover)
+    let procurarId = usuarios.find(u => u.id === idDoUsuarioParaRemover) // procurando o objeto
     
-    console.log(procurarId)
+    let remove = usuarios.indexOf(procurarId)// identificando se o objeto existe dentro do array
+    
+    if (remove > -1){ // condição para validar se achou o elemento no array
+        usuarios.splice(remove,1) // função para remover do array
+
+    }
+        
+    console.log(usuarios)
 
 }
 
 
 function alterar(novosDados, idUsuario){
-    // Seu código aqui
+    let procurarId = usuarios.find(u => u.id === idUsuario)
+    const senhaNova = bcrypt.hashSync(novosDados.senha, 10)
+    let dados={
+        
+        nome: novosDados.nome,
+        email: novosDados.email,
+        senha: senhaNova
+    }
+    console.log(dados)
+    console.log(procurarId.nome.replace(dados.nome))
 }
 
 function addEndereco(novoEndereco, idUsuario){

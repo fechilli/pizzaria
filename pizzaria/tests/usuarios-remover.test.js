@@ -1,3 +1,3 @@
 const funcoes = require("../services/UsuariosServices")
 
-funcoes.remover(2)
+funcoes.remover(129)
