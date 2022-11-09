@@ -90,46 +90,71 @@ function remover(idDoUsuarioParaRemover){
 
     }
         
-    console.log(usuarios)
+    console.log(procurarId)
 
 }
 
 
 function alterar(novosDados, idUsuario){
     let procurarId = usuarios.find(u => u.id === idUsuario)
-    const senhaNova = bcrypt.hashSync(novosDados.senha, 10)
+    //const senhaNova = bcrypt.hashSync(novosDados.senha, 10)
     let dados={
         
         nome: novosDados.nome,
         email: novosDados.email,
-        senha: senhaNova
+        senha: "senha"
     }
-    console.log(dados)
-    console.log(procurarId.nome.replace(dados.nome))
+    procurarId.nome = dados.nome
+    procurarId.email = dados.email
+    procurarId.senha = bcrypt.hashSync(dados.senha, 10)
+    
+    console.log(procurarId)
 }
 
 function addEndereco(novoEndereco, idUsuario){
     // Seu código aqui
+    let procurarId = usuarios.find(u => u.id === idUsuario)
+
+   // let end = procurarId.enderecos.push(novoEndereco)
+    
 }
 
 function removerEndereco(posicaoDoEndereco, idUsuario){
 // Seu código aqui
+    let procurarId = usuarios.find(u => u.id === idUsuario).enderecos // localiza o array de endereço dentro do usuario
+    let procIndice = procurarId[posicaoDoEndereco]
+    if ( procIndice != undefined){
+       procurarId.splice(posicaoDoEndereco, 1)
+    }
+    
+    
 }
 
 function alterarEndereco(posicaoDoEndereco, novoEndereco, idUsuario){
-// Seu código aqui        
+    
+    
+    
+    let procurarId = usuarios.find(u => u.id === idUsuario).enderecos // localiza o array de endereço dentro do usuario
+    let procIndice = procurarId[posicaoDoEndereco] // busca no array o indice
+    let n = novoEndereco
+    console.log(procIndice)
 }
 
 function addFormaDePagamento(novaFormaDePagamento, idUsuario){
-    // Seu código aqui
+    let procurarId = usuarios.find(u => u.id === idUsuario)
+    let newPag = procurarId.formasDePagamento.push(novaFormaDePagamento)
 }
 
 function removerFormaDePagamento(posicaoDaFormaDePagamento, idUsuario){
-    // Seu código aqui
+    let procurarId = usuarios.find(u => u.id === idUsuario)
+    let localizar = procurarId.formasDePagamento.indexOf(posicaoDaFormaDePagamento)
+    if(localizar === -1){
+        procurarId.splice(posicaoDaFormaDePagamento)
+    }
 }
 
 function alterarFormaDePagamento(novaFormaDePagamento, posicaoDaFormaDePagamento, idUsuario){
-    // Seu código aqui
+    let procurarId = usuarios.find(u => u.id === idUsuario)
 }
 
 const UsuariosServices = {

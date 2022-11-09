@@ -1,14 +1,11 @@
 const funcoes = require("../services/UsuariosServices")
-let teste =  {
-    "id": 129,
-    "nome": "Felipe",
-    "email": "felipe@eu.com.br",
-    "senha": "123456",
-    "enderecos": [
-        "asdasdasd"
-    ],
-    "formasDePagamento": []
-}
+let teste = ['xfgfdgdfg']
 
 
-funcoes.alterar(teste, 2)
+//funcoes.remover(2)
+
+//funcoes.addEndereco("rua bebedouro, 119", 2)
+
+//funcoes.removerEndereco(0,2)
+
+funcoes.alteraEndereco()
